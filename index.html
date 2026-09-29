@@ -374,10 +374,10 @@ function anim(el){
   }
   requestAnimationFrame(step);
 }
-// reveal on scroll + trigger counters
+// reveal on scroll + 每次进入视口重播数字计数动画（不取消监听）
 const io=new IntersectionObserver((es)=>{
   es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in');
-    e.target.querySelectorAll('.num[data-to]').forEach(anim); io.unobserve(e.target);}});
+    e.target.querySelectorAll('.num[data-to]').forEach(anim); }});
 },{threshold:.18});
 document.querySelectorAll('section').forEach(s=>{s.classList.add('reveal');io.observe(s);});
 
